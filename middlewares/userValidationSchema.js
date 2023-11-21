@@ -14,7 +14,7 @@ const userValidationSchema = yup.object().shape({
     .string()
     .required("Password is required")
     .min(8, "password is too short")
-    .matches(/^[a-zA-Z0-9]+$/, "Password cannot have a symbol")
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[A-Z]).{8,}$/, "Please input a strong password")
 })
 
 module.exports = {userValidationSchema}
