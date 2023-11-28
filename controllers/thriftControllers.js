@@ -1,7 +1,8 @@
 const thriftModel = require("../models/thriftModel");
 const transactionModel = require("../models/transactionModel");
 const userModel = require("../models/userModel");
-const axios = require("axios")
+const axios = require("axios");
+const { processDailyContributions, processWeeklyContributions, processMonthlyContributions } = require("./processTransactions");
 // const { verifyUserToken } = require("./userController");
 
 
@@ -193,11 +194,17 @@ const thriftStatus = async ()=>{
   }
 }
 
+const processThrift = async ()=>{
+  processDailyContributions()
+  processWeeklyContributions()
+  processMonthlyContributions()
+}
 
 
 
 
 
-module.exports = { createThrift, joinThrift, getUserThrifts, getThriftById, verifyPayments, thriftStatus, getTransactions };
+
+module.exports = { createThrift, joinThrift, getUserThrifts, getThriftById, verifyPayments, thriftStatus, getTransactions,  processThrift };
 
   
